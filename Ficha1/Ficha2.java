@@ -72,31 +72,33 @@ public class Ficha2 {
 
         int maxArraySize;
         if (n1<n2) maxArraySize = n2; else maxArraySize = n1;
-        int[] commonIntArray = new int[maxArraySize];
+        int[] aux = new int[maxArraySize];
 
         int counter = 0;
 
         for(int a=0; a<n1; a++){
             for(int b=0; b<n2; b++){
                 if(array1[a]==array2[b]){
-                    commonIntArray[counter]=array1[a];
+                    aux[counter]=array1[a];
                     counter++;
                 } 
             }
         }
 
-        int[] commonIntArraySizeFixed = new int[counter]; 
+        int[] commonsIntArray = new int[counter]; 
         for(int c=0; c<counter; c++){
-            commonIntArraySizeFixed[c] = commonIntArray[c];
+            commonsIntArray[c] = aux[c];
         }
+
         
-        /*
-        for(int d=0; d<counter; d++){
-            if(commonIntArraySizeFixed[d]==commonIntArraySizeFixed[d+1])
-        }
-        */
+        //still need to fix giving multiple equal values
+
         sc.close();
-        return commonIntArraySizeFixed;
+        return commonsIntArray;
 
     }
+
+
+
+    
 }

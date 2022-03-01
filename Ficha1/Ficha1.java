@@ -100,7 +100,7 @@ public class Ficha1{
     public long tempoGasto(){
         LocalDateTime start = LocalDateTime.now();
         long startTime = start.getNano();
-        long fatorialResult = factorial(5000);
+        long factorialResult = factorial(5000);
         LocalDateTime end = LocalDateTime.now();
         long endTime = end.getNano();
         return (endTime - startTime)/1000000;
