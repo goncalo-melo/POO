@@ -42,8 +42,9 @@ public class TestePrograma{
                         }
                         System.out.print("\n");
                         break;
-
-            case 2:
+                }
+        }
+            /*case 2:
                 System.out.print("Introduza a alínea: ");
                 String alinea2 = sc.next();
                 switch(alinea2){
@@ -53,7 +54,7 @@ public class TestePrograma{
                         break;
                     
                     case "b":       
-
+                    */
 
         /*switch(numExercicios){
 
