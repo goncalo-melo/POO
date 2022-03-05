@@ -105,7 +105,7 @@ public class Ficha1{
         long endTime = end.getNano();
         return (endTime - startTime)/1000000;
     }
-//----------------------------------------------------------------------------
+// ---
 
 }
 
