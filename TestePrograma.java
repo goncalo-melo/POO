@@ -2,9 +2,26 @@ import java.util.Scanner;
 
 
 public class TestePrograma{
+
+    public static int[] buildArrayInt(){      
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Quantos elementos pretende colocar no array? ");
+        int n = sc.nextInt();
+        int arrayInt[] = new int[n];
+        
+        for(int i=0; i<n; i++){
+            System.out.print("Elemento para inserir no array: ");
+            int elem = sc.nextInt();
+            arrayInt[i] = elem;
+        }
+        //sc.close();
+        return arrayInt;
+    }
+
     public static void main(String[] args){
         Ficha1 ficha1 = new Ficha1();
         Ficha2 ficha2 = new Ficha2();
+       // Ficha3 ficha3 = new Ficha3();
 
         Scanner sc = new Scanner(System.in);
 
@@ -73,20 +90,30 @@ public class TestePrograma{
             System.out.print("Introduza o número do exercício: ");
             int exercicio2 = sc.nextInt();
 
+            System.out.print("Introduza a alínea: ");
+            String alinea2 = sc.next();
+
+            // número do exercício da ficha 2
             switch(exercicio2){
 
                 case 1:
-                    System.out.print("Introduza a alínea: ");
-                    String alinea2 = sc.next();
+                    // alínea do exercício 1 da ficha 2
                     switch(alinea2){
 
                         case "a":
-                            int minimo = ficha2.lerMinimoArrayInteiros();
+                            int minimo = ficha2.lerMinimoArrayInteiros(buildArrayInt());
                             System.out.println("O menor elemento do array é "+minimo);
                             break;
                         
                         case "b":
-                            int[] subArray = ficha2.subArrayInteiros();
+                            int[] arrayInt = buildArrayInt();
+                            System.out.print("índice de início: ");
+                            int beg = sc.nextInt(); // erro nesta linha ; fix me pls ;-;
+                            System.out.print("índice de término: ");
+                            int end = sc.nextInt();
+                            
+                            int[] subArray = ficha2.subArrayInteiros(arrayInt, beg, end);
+
                             System.out.print("O subarray entre os dois índices é: ");
                             for(int i=0; i<subArray.length; i++){
                                 System.out.print(subArray[i]+" ");
@@ -94,7 +121,12 @@ public class TestePrograma{
                             System.out.print("\n");
                             break;
                         case "c":
-                            int[] commonIntArray = ficha2.commonIntArray();
+                            System.out.println("Construa o primeiro array:");
+                            int[] array1 = buildArrayInt();
+                            System.out.println("Construa o segundo array:");
+                            int[] array2 = buildArrayInt();
+
+                            int[] commonIntArray = ficha2.commonIntArray(array1, array2);
                             System.out.print("O array com os elementos comuns é: ");
                             for(int i=0; i<commonIntArray.length; i++){
                                 System.out.print(commonIntArray[i]+" ");
@@ -102,7 +134,28 @@ public class TestePrograma{
                             System.out.print("\n");
                             break;
                     }
+
+                case 2:
+                    switch(alinea2){
+
+                        case "a":
+                           
+                            break;
+                        
+                        case "b":
+                           
+                            break;
+                        case "c":
+                            
+                            break;
+                    }
+
+
             }
+
+            // --- FICHA 3 ---
+            
+
             sc.close();
 
 
