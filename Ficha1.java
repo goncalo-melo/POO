@@ -46,8 +46,6 @@ public class Ficha1{
 
 
 
-
-
 //EXERCÍCIOS II
 
     public double celsiusParaFarenheit(double graus){

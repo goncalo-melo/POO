@@ -1,7 +1,8 @@
 import java.lang.Math.*;
 
 public class Ficha3 {
-    // 1 faltam os construtores.
+
+    // --- CIRCULO ---.
     public class Circulo{
         private double x;
         private double y;
@@ -30,6 +31,12 @@ public class Ficha3 {
 
         public double getRaio(){
             return this.raio;
+        }
+
+        public Circulo(Circulo umCirculo){
+            this.x = umCirculo.getX();
+            this.y = umCirculo.getY();
+            this.raio = umCirculo.getRaio();
         }
 
         public void setX(double newX){
@@ -69,12 +76,35 @@ public class Ficha3 {
         public String toString(){
             return "Centro: X = "+ this.x + "; Y = " + this.y + "\nRaio = " + this.raio;
         }
-        /* wtf is wrong idk pls fix me ;-;
+       
         public Circulo clone(){
             return new Circulo(this);
         }
-        */
+        
+        public double teste(){
+            return calculaArea();
+        }
     }
+
+
+
+    // --- TELEMOVEL ---
+
+    public class Telemovel{
+        private String marca;
+        private String modelo;
+        private String display; //?
+        private String armazenamentoMsg;
+        private String armazenamentoFotEApp;
+        private String armazenamentoFot;
+        private String armazenamentoApp;
+        private int espacoOcupado;
+        private int numFot;
+        private int numApp;
+        private String appNames;
+    }
+
+    //uncomplete
 
     
 }

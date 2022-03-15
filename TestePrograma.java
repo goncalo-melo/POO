@@ -21,17 +21,19 @@ public class TestePrograma{
     public static void main(String[] args){
         Ficha1 ficha1 = new Ficha1();
         Ficha2 ficha2 = new Ficha2();
-       // Ficha3 ficha3 = new Ficha3();
+        //Ficha3 ficha3 = new Ficha3();
+        LinhaDeEncomenda linhaDeEncomenda = new LinhaDeEncomenda("abc", "linha fixe", 59.90, 2, 0.23, 0.10);
+        Encomenda encomenda = new Encomenda();
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Introduza o número da ficha: ");
-        int ficha = sc.nextInt();
+        System.out.print("Introduza a ficha: ");
+        String ficha = sc.next();
 
         switch(ficha){
 
             // --- FICHA 1 ---
-            case 1:     
+            case "1":     
             System.out.print("Introduza o número do exercício: ");
             int exercicio1 = sc.nextInt();
 
@@ -85,7 +87,7 @@ public class TestePrograma{
             break;
 
             // --- FICHA 2 ---
-            case 2:     
+            case "2":     
             
             System.out.print("Introduza o número do exercício: ");
             int exercicio2 = sc.nextInt();
@@ -153,8 +155,22 @@ public class TestePrograma{
 
             }
 
-            // --- FICHA 3 ---
+            // --- LINHA DE ENCOMENDA ---
+            case "LinhaDeEncomenda":
             
+            double valorEncomenda = linhaDeEncomenda.calculaValorLinhaEnc();
+            double valorPoupado = linhaDeEncomenda.calculaValorDesconto();
+            String l = linhaDeEncomenda.toString();
+            System.out.println(l);
+            System.out.println("O valor da encomenda é: "+valorEncomenda);
+            System.out.println("O dinheiro poupado na encomenda foi: "+valorPoupado);
+
+            case "Encomenda":
+            String e = encomenda.toString();
+            System.out.println(e);
+
+
+
 
             sc.close();
 
