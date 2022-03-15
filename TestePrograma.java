@@ -3,27 +3,11 @@ import java.util.Scanner;
 
 public class TestePrograma{
 
-    public static int[] buildArrayInt(){      
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Quantos elementos pretende colocar no array? ");
-        int n = sc.nextInt();
-        int arrayInt[] = new int[n];
-        
-        for(int i=0; i<n; i++){
-            System.out.print("Elemento para inserir no array: ");
-            int elem = sc.nextInt();
-            arrayInt[i] = elem;
-        }
-        //sc.close();
-        return arrayInt;
-    }
 
     public static void main(String[] args){
         Ficha1 ficha1 = new Ficha1();
         Ficha2 ficha2 = new Ficha2();
         //Ficha3 ficha3 = new Ficha3();
-        LinhaDeEncomenda linhaDeEncomenda = new LinhaDeEncomenda("abc", "linha fixe", 59.90, 2, 0.23, 0.10);
-        Encomenda encomenda = new Encomenda();
 
         Scanner sc = new Scanner(System.in);
 
@@ -154,27 +138,56 @@ public class TestePrograma{
 
 
             }
+            
+            // --- CIRCULO ---
+            case "Círculo":
+            Ponto centro = new Ponto();
+            Circulo c = new Circulo(centro, 0);
+            
+            System.out.println(c);
+            centro.setX(1);
+            centro.setY(1);
+            System.out.println(c);
+            break;
 
             // --- LINHA DE ENCOMENDA ---
             case "LinhaDeEncomenda":
+
+            LinhaDeEncomenda linhaDeEncomenda = new LinhaDeEncomenda("abc", "linha fixe", 59.90, 2, 0.23, 0.10);
             
+            String l = linhaDeEncomenda.toString();
             double valorEncomenda = linhaDeEncomenda.calculaValorLinhaEnc();
             double valorPoupado = linhaDeEncomenda.calculaValorDesconto();
-            String l = linhaDeEncomenda.toString();
+
             System.out.println(l);
             System.out.println("O valor da encomenda é: "+valorEncomenda);
             System.out.println("O dinheiro poupado na encomenda foi: "+valorPoupado);
+            break;
 
             case "Encomenda":
-            String e = encomenda.toString();
-            System.out.println(e);
 
+            break;
 
-
-
-            sc.close();
 
 
         }
+        sc.close();
+    }
+
+
+    //auxiliary functions
+    public static int[] buildArrayInt(){      
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Quantos elementos pretende colocar no array? ");
+        int n = sc.nextInt();
+        int arrayInt[] = new int[n];
+        
+        for(int i=0; i<n; i++){
+            System.out.print("Elemento para inserir no array: ");
+            int elem = sc.nextInt();
+            arrayInt[i] = elem;
+        }
+        //sc.close();
+        return arrayInt;
     }
 }

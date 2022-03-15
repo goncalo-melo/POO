@@ -1,64 +1,44 @@
  // --- CIRCULO ---.
- public class Circulo{
-    private double x;
-    private double y;
+ public class Circulo {
+
+    private Ponto centro;
     private double raio;
 
 
     public Circulo(){
-        this.x = 0;
-        this.y = 0;
+        this.centro = new Ponto();
         this.raio = 1;
     }
 
-    public Circulo(double x, double y, double raio){
-        this.x = x;
-        this.y = y;
+    public Circulo(Ponto centro, double raio){
+        this.centro = centro.clone();
         this.raio = raio;
+    } 
+
+    public Circulo(Circulo umCirculo){
+        this.centro = umCirculo.getPonto();
+        this.raio = umCirculo.getRaio();
     }
 
-    public double getX(){
-        return this.x;
-    }
 
-    public double getY(){
-        return this.y;
+    public Ponto getPonto(){
+        return this.centro.clone();
     }
 
     public double getRaio(){
         return this.raio;
     }
 
-    public Circulo(Circulo umCirculo){
-        this.x = umCirculo.getX();
-        this.y = umCirculo.getY();
-        this.raio = umCirculo.getRaio();
-    }
-
-    public void setX(double newX){
-        this.x = newX;
-    }
-
-    public void setY(double newY){
-        this.y = newY; 
+    public void setPonto(Ponto newCentro){
+        this.centro = newCentro.clone();
     }
 
     public void setRaio(double newRaio){
         this.raio = newRaio;
     }
-
-
-
-
-
-
-
-
-
     
-    public void alteraCentro(double x, double y){
-        this.x = x;
-        this.y = y;
+    public void alteraCentro(Ponto centro){
+        this.centro = centro;
     }
 
     public double calculaArea(){
@@ -69,19 +49,23 @@
         return Math.PI*(2*this.raio);
     }
     
+    
+    @Override
     public boolean equals(Object o){
         if ( this == o )
             return true;
         if ((o == null) || (this.getClass() != o.getClass()))
             return false;
         Circulo c = (Circulo) o ;
-        return (this.x == c.getX() && this.y == c.getY() && this.raio == c.getRaio());
+        return (this.centro.equals(c.centro) && this.raio == c.getRaio());
     }
 
+    @Override
     public String toString(){
-        return "Centro: X = "+ this.x + "; Y = " + this.y + "\nRaio = " + this.raio;
+        return "Centro: X = "+ this.centro.getX() + "; Y = " + this.centro.getY() + "\nRaio = " + this.raio;
     }
-   
+    
+    @Override
     public Circulo clone(){
         return new Circulo(this);
     }

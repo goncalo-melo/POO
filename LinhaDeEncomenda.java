@@ -1,33 +1,33 @@
-public class LinhaDeEncomenda{
+public class LinhaDeEncomenda {
+
     private String referencia;
     private String descricao;
-    private double preco; // sem impostos
+    private double precoBruto; 
     private int quantidade;
-    private double regimeDeImposto; // percentagem (coloquei as percentagens em decimal ou seja, regime de imposto = 0.06, 0.15, 0.23, etc, same para os descontos)
-    private double desconto; // desconto em relação ao preço sem impostos, percentagem
+    private double imposto; 
+    private double desconto;
 
     public LinhaDeEncomenda() {
-
     }
-    /*
-    public LinhaDeEncomenda(){
-        referencia = "";
-        descricao = "";
-        preco = 0;
-        quantidade = 0;
-        regimeDeImposto = 0;
-        desconto = 0;
-    }
-    */
 
-    public LinhaDeEncomenda(String referencia, String descricao, double preco, int quantidade, double regimeDeImposto, double desconto) {
+    public LinhaDeEncomenda(String referencia, String descricao, double precoBruto, int quantidade, double imposto, double desconto) {
         this.referencia = referencia;
         this.descricao = descricao;
-        this.preco = preco;
+        this.precoBruto = precoBruto;
         this.quantidade = quantidade;
-        this.regimeDeImposto = regimeDeImposto;
+        this.imposto = imposto;
         this.desconto = desconto;
     }
+
+    public LinhaDeEncomenda(LinhaDeEncomenda umaLinhaDeEncomenda){
+        this.referencia = umaLinhaDeEncomenda.referencia;
+        this.descricao = umaLinhaDeEncomenda.descricao;
+        this.precoBruto = umaLinhaDeEncomenda.precoBruto;
+        this.quantidade = umaLinhaDeEncomenda.quantidade;
+        this.imposto = umaLinhaDeEncomenda.imposto;
+        this.desconto = umaLinhaDeEncomenda.desconto;
+    }
+
 
     public String getReferencia() {
         return this.referencia;
@@ -45,12 +45,12 @@ public class LinhaDeEncomenda{
         this.descricao = descricao;
     }
 
-    public double getPreco() {
-        return this.preco;
+    public double getPrecoBruto() {
+        return this.precoBruto;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setPrecoBruto(double precoBruto) {
+        this.precoBruto = precoBruto;
     }
 
     public int getQuantidade() {
@@ -61,12 +61,12 @@ public class LinhaDeEncomenda{
         this.quantidade = quantidade;
     }
 
-    public double getRegimeDeImposto() {
-        return this.regimeDeImposto;
+    public double getImposto() {
+        return this.imposto;
     }
 
-    public void setRegimeDeImposto(double regimeDeImposto) {
-        this.regimeDeImposto = regimeDeImposto;
+    public void setImposto(double imposto) {
+        this.imposto = imposto;
     }
 
     public double getDesconto() {
@@ -87,8 +87,8 @@ public class LinhaDeEncomenda{
         return this;
     }
 
-    public LinhaDeEncomenda preco(double preco) {
-        setPreco(preco);
+    public LinhaDeEncomenda precoBruto(double precoBruto) {
+        setPrecoBruto(precoBruto);
         return this;
     }
 
@@ -97,8 +97,8 @@ public class LinhaDeEncomenda{
         return this;
     }
 
-    public LinhaDeEncomenda regimeDeImposto(double regimeDeImposto) {
-        setRegimeDeImposto(regimeDeImposto);
+    public LinhaDeEncomenda imposto(double imposto) {
+        setImposto(imposto);
         return this;
     }
 
@@ -107,19 +107,8 @@ public class LinhaDeEncomenda{
         return this;
     }
 
-    /*
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof LinhaDeEncomenda)) {
-            return false;
-        }
-        LinhaDeEncomenda linhaDeEncomenda = (LinhaDeEncomenda) o;
-        return Objects.equals(referencia, linhaDeEncomenda.referencia) && Objects.equals(descricao, linhaDeEncomenda.descricao) && preco == linhaDeEncomenda.preco && quantidade == linhaDeEncomenda.quantidade && regimeDeImposto == linhaDeEncomenda.regimeDeImposto && desconto == linhaDeEncomenda.desconto;
-    }
-    */
 
+    @Override
     public boolean equals(Object o){
         if ( this == o )
             return true;
@@ -128,34 +117,25 @@ public class LinhaDeEncomenda{
         LinhaDeEncomenda l = (LinhaDeEncomenda) o ;
         return (this.referencia == l.getReferencia()    
             && this.descricao == l.getDescricao()
-            && this.preco == l.getPreco()
+            && this.precoBruto == l.getPrecoBruto()
             && this.quantidade == l.getQuantidade()
-            && this.regimeDeImposto == l.getRegimeDeImposto()
+            && this.imposto == l.getImposto()
             && this.desconto == l.getDesconto());
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " referencia='" + getReferencia() + "'" +
-            ", descricao='" + getDescricao() + "'" +
-            ", preco='" + getPreco() + "'" +
-            ", quantidade='" + getQuantidade() + "'" +
-            ", regimeDeImposto='" + getRegimeDeImposto() + "'" +
-            ", desconto='" + getDesconto() + "'" +
-            "}";
+        return "[\n" +
+            "Referência = '" + getReferencia() + "'" +
+            " \nDescrição = '" + getDescricao() + "'" +
+            " \nPreço bruto = '" + getPrecoBruto() + "'" +
+            " \nQuantidade = '" + getQuantidade() + "'" +
+            " \nImposto = '" + getImposto() + "'" +
+            " \nDesconto = '" + getDesconto() + "'" +
+            "\n]";
     }
 
-    public LinhaDeEncomenda(LinhaDeEncomenda umaLinhaDeEncomenda){
-        this.referencia = umaLinhaDeEncomenda.referencia;
-        this.descricao = umaLinhaDeEncomenda.descricao;
-        this.preco = umaLinhaDeEncomenda.preco;
-        this.quantidade = umaLinhaDeEncomenda.quantidade;
-        this.regimeDeImposto = umaLinhaDeEncomenda.regimeDeImposto;
-        this.desconto = umaLinhaDeEncomenda.desconto;
-    }
-
-
+    @Override
     public LinhaDeEncomenda clone(){
         return new LinhaDeEncomenda(this);
     }
@@ -163,14 +143,12 @@ public class LinhaDeEncomenda{
 
     //METODOS DO EXERCICIO
     public double calculaValorLinhaEnc(){
-        return quantidade*(((this.preco)*(1-this.desconto))/(1-this.regimeDeImposto));
+        return quantidade*(((this.precoBruto)*(1-this.desconto))/(1-this.imposto));
     }
 
     public double calculaValorDesconto(){
-        return ((quantidade*this.preco)-(quantidade*((this.preco)*(1-this.desconto))));
+        return ((quantidade*this.precoBruto)-(quantidade*((this.precoBruto)*(1-this.desconto))));
     }
-
-
 
 }
 
