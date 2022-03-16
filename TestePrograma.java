@@ -164,7 +164,7 @@ public class TestePrograma{
             System.out.println("O dinheiro poupado na encomenda foi: "+valorPoupado);
             break;
 
-            case "Encomenda":
+            case "Encomenda": //criar uma lista de encomendas e uma encomenda e testar
 
             break;
 

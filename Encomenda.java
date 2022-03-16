@@ -117,7 +117,14 @@ public class Encomenda{
     }
 
     //METODOS DO EXERCICIO
-
+    public double calculaValorTotal(){
+        // iterar sobre a arrays list , invocando a calculaValorLinhaEnc para cada linha de encomenda da lista e somar;
+        int valorTotal=0;
+        for(int i=0; i<ls.size(); i++){
+            valorTotal += ls.get(i).calculaValorLinhaEnc();
+        }
+        return valorTotal;
+    }
     
     
 
