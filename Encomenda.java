@@ -9,7 +9,7 @@ public class Encomenda{
     private String morada;
     private int numEnc;
     private LocalDate dataEnc;
-    private List<LinhaDeEncomenda> ls; 
+    private ArrayList<LinhaDeEncomenda> ls; 
 
     public Encomenda(){
 
@@ -26,7 +26,7 @@ public class Encomenda{
     }
     */
 
-    public Encomenda(String nomeCliente, int nifCliente, String morada, int numEnc, LocalDate dataEnc, List<LinhaDeEncomenda> ls){
+    public Encomenda(String nomeCliente, int nifCliente, String morada, int numEnc, LocalDate dataEnc, ArrayList<LinhaDeEncomenda> ls){
         this.nomeCliente = nomeCliente;
         this.nifCliente = nifCliente;
         this.morada = morada;
@@ -88,7 +88,7 @@ public class Encomenda{
         this.dataEnc = newDataEnc;
     }
 
-    public void setLs(List<LinhaDeEncomenda> newLs){
+    public void setLs(ArrayList<LinhaDeEncomenda> newLs){
         this.ls = newLs;
     }
 
@@ -118,14 +118,44 @@ public class Encomenda{
 
     //METODOS DO EXERCICIO
     public double calculaValorTotal(){
-        // iterar sobre a arrays list , invocando a calculaValorLinhaEnc para cada linha de encomenda da lista e somar;
-        int valorTotal=0;
+        double valorTotal=0;
         for(int i=0; i<ls.size(); i++){
             valorTotal += ls.get(i).calculaValorLinhaEnc();
         }
         return valorTotal;
     }
-    
-    
+
+    public double calculaValorDescontoTotal(){
+        double descontoTotal=0;
+        for(int i=0; i<ls.size(); i++){
+            descontoTotal += ls.get(i).calculaValorDesconto();
+        }
+        return descontoTotal;
+    }
+
+    public double numeroTotalProdutos(){
+        int quantidadeTotal=0; 
+        for(int i=0; i<ls.size(); i++){
+            quantidadeTotal += ls.get(i).getQuantidade();
+        }
+        return quantidadeTotal;
+    }
+
+    public boolean existeProdutoEncomenda(String refProduto){
+        for(int i=0; i<ls.size(); i++){
+            if (ls.get(i).getReferencia()==refProduto) return true;
+        }
+        return false;
+    }
+
+    public void adicionaLinha(LinhaDeEncomenda linha){ 
+        ls.add(linha.clone());
+    }
+
+    public void removeProduto(String codProduto){
+        for(int i=0; i<ls.size(); i++){
+            if (ls.get(i).getReferencia()==codProduto) ls.remove(i);
+        }
+    }
 
 }
